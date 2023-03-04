@@ -1,25 +1,55 @@
-import logo from './logo.svg';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './pages/home/Home';
+import Login from './pages/login/Login';
+import List from './pages/list/List';
+import Single from './pages/single/Single';
+import New from './pages/new/New';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+      <Routes>
+        <Route path='/'>
+          <Route index element={<Home/>}/>
+          <Route path='login' element={<Login/>}/>
+          </Route>
+          <Route path='users'>
+            <Route index element={<List/>}/>
+            <Route path=':userId' element={<Single/>}/>
+            <Route path='new' element={<New/>}/>
+          </Route>
+          <Route path='products'>
+            <Route index element={<List/>}/>
+            <Route path=':userId' element={<Single/>}/>
+            <Route path='new' element={<New/>}/>
+          </Route>
+          <Route path='list'>
+            <Route index element={<List/>}/>
+            <Route path=':userId' element={<Single/>}/>
+            <Route path='new' element={<New/>}/>
+          </Route>
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }
 
 export default App;
+
+
+
+
+// import React from "react";
+// import { useQuery, useMutation } from "@apollo/client";
+// import OfferTile from "./OfferTile.js";
+
+// export default function OfferListing() {
+//     // Use console.log() for debugging
+//     const LOADING = "Loading offers";
+//     const ERROR = "Failed to load offers";
+
+//     return "Return OfferTiles here";
+// }
+
